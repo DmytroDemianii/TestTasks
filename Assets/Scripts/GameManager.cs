@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private const string SCORE = "Score: ";
-
+    [SerializeField] private HoleManager _holeManager;
     [SerializeField] private DestroyCubes _destroyer;
     [SerializeField] private UIController _UI;
 
     private int _score = 0;
-    private float _scale;
+    private float _scaleMultiplier = 1.5f;
 
 
     private void Awake()
@@ -31,15 +30,18 @@ public class GameManager : MonoBehaviour
         {
             case 40:
                 IncreaseOneStep(10);
-                break;
-            case 100:
-                IncreaseOneStep(40);
+                SetNewHoleScale();
                 break;
             case 300:
-                IncreaseOneStep(90);
+                IncreaseOneStep(20);
+                SetNewHoleScale();
+                break;
+            case 800:
+                IncreaseOneStep(60);
+                SetNewHoleScale();
                 break;
             default:
-            if (this._score >= 600)
+            if (this._score >= 1400)
             {
                 InvokeWinPanel();
             }
@@ -53,8 +55,13 @@ public class GameManager : MonoBehaviour
         Debug.Log(_destroyer._onStep);
     }
 
+    private void SetNewHoleScale()
+    {
+        _holeManager.HoleUpScale(_scaleMultiplier);
+    }
+
     private void InvokeWinPanel()
     {
-
+        Debug.Log("WIN");
     }
 }

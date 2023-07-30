@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 
 public class DestroyCubes : MonoBehaviour
 {
     public event Action<int> OnCollected;
 
-    public int _onStep;
+    public int _onStep { get; set;}
 
     private void Start()
     {
         _onStep = 10;
-        
     }
 
     private void OnTriggerEnter(Collider other)

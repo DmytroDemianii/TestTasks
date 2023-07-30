@@ -4,13 +4,13 @@ using UnityEngine;
 public class Navigator : MonoBehaviour
 {
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] public float _moveSpeed;
 
     [Header("Gravity")] 
     
-    [Range(1f,1000f)]public float power = 1f; // gravity power
+    [Range(1f, 1000f)]public float power = 1f; // gravity power
     [Range(-10f, 10f)] public float upOrDown; // direction of gravity
-    [Range(1f,10f)]public float forceRange = 1f; // range of gravity
+    [Range(1f, 20f)]public float forceRange = 1f; // range of gravity
     
     public LayerMask layerMask; // determines which layer should be affected by gravity
 
