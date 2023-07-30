@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Navigator _navigator;
     [SerializeField] private HoleManager _holeManager;
     [SerializeField] private DestroyCubes _destroyer;
     [SerializeField] private UIController _UI;
@@ -36,12 +37,8 @@ public class GameManager : MonoBehaviour
                 IncreaseOneStep(20);
                 SetNewHoleScale();
                 break;
-            case 800:
-                IncreaseOneStep(60);
-                SetNewHoleScale();
-                break;
             default:
-            if (this._score >= 1400)
+            if (this._score >= 1000)
             {
                 InvokeWinPanel();
             }
@@ -62,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     private void InvokeWinPanel()
     {
+        _navigator.MakeNonInteractable();
+        _UI.AppearWinPanel();
         Debug.Log("WIN");
     }
 }
